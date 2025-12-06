@@ -28,7 +28,7 @@ try {
     const pais = data.find(p=>p.name.common===paisnombre)
    
 
-let templatebandera=`<li><img src="${pais.flags.png}"><br>PAIS:${paisnombre} </li>`
+let templatebandera=`<li><img src="${pais.flags.png}"><br>${paisnombre} </li>`
 container.innerHTML+= templatebandera  ;
 
   });
