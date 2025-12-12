@@ -10,6 +10,8 @@ console.log("funciona")
 // - capital
 
 const countrieslist= document.getElementById("countries-list")
+const  info = document.getElementById("info")
+
  container= document.getElementById("listapaises")
 
 const conseguirbandera = async ()=>{
@@ -28,13 +30,39 @@ try {
     const pais = data.find(p=>p.name.common===paisnombre)
    
 
-let templatebandera=`<li><img src="${pais.flags.png}"><br>${paisnombre} </li>`
+let templatebandera=`<li class="card" >
+<img src="${pais.flags.png}">
+<br>${paisnombre}
+ </li>`
 container.innerHTML+= templatebandera  ;
 
+  
   });
 
+     const cards = document.querySelectorAll(".card")
 
-  
+cards.forEach((card,i)=>{
+  card.addEventListener("click",()=>{
+      const paises =data.find(p=> p.name.common  ===PAISESORDENADOS[i]);
+      const {flags, name:{common},population, car , capital} = paises
+      const template=`
+      <div>
+        <img src="${flags.png}">
+        <br>${common}
+        <p> habitantes :${population}</p>
+    <p> direccion de coche :${car.side}</p>
+    <p> capital :${capital}</p>      
+      </div>
+
+      `
+
+      info.innerHTML = template
+
+   // console.log("prueba de indices" + i )<----- TODO FUNCIONA
+  })
+})
+
+
 
 }catch (error){
   console.log("error al obtener datos", error)
