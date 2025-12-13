@@ -12,6 +12,7 @@ console.log("funciona")
 const countrieslist= document.getElementById("countries-list")
 const  info = document.getElementById("info")
 
+
  container= document.getElementById("listapaises")
 
 const conseguirbandera = async ()=>{
@@ -43,16 +44,27 @@ container.innerHTML+= templatebandera  ;
 
 cards.forEach((card,i)=>{
   card.addEventListener("click",()=>{
+
+      info.classList.add("visible")    
       const paises =data.find(p=> p.name.common  ===PAISESORDENADOS[i]);
       const {flags, name:{common},population, car , capital} = paises
+      
+
+
       const template=`
-      <div>
+      <div  id="info-container" class="info-container" >
+      <div >
+      <div id="cerrado" class="cerrado" ></div>
         <img src="${flags.png}">
         <br>${common}
         <p> habitantes :${population}</p>
     <p> direccion de coche :${car.side}</p>
-    <p> capital :${capital}</p>      
+    <p> capital :${capital}</p>  
+    <button id ="botoncerrado" class="btn"> CERRAR</button>   
+      
       </div>
+       </div>
+
 
       `
 
@@ -64,10 +76,24 @@ cards.forEach((card,i)=>{
 
 
 
+
 }catch (error){
   console.log("error al obtener datos", error)
 }
+
+
+
+
+info.addEventListener("click",(e)=>{
+  if(e.target.id ==="botoncerrado" ||
+    e.target.classList.contains("cerrado")){
+info.classList.remove("visible")
+  }
+})
+
+
 };
+
 
 
 

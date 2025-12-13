@@ -33,4 +33,27 @@ border: 1px solid #333;
   display: block;
 }
 
+.info{
+  display: none;
+  position: fixed;
+  bottom:  0;
+  left: 0;
+  right: 0;
+  top : 0;
+  background-color: rgba(128, 255, 0, 0.418);
 
+}
+
+.visible{
+  display: block;
+}
+
+.info-container{
+ display: flex;
+
+  padding: 10px;
+  align-items: center;
+  justify-content: center;
+
+}
+ 
